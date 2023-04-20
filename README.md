@@ -13,6 +13,8 @@ pip install -r requirements.txt
 
 python ./src/app.py
 
+pip install -r requirements.txt
+
 deactivate
 
 docker build -t python/app:latest -f Dockerfile .
