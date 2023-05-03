@@ -5,9 +5,9 @@ name: Python application
 
 on:
   push:
-    branches: ["salomonDabbah"]
+    branches: ["*"]
   pull_request:
-    branches: ["salomonDabbah"]
+    branches: ["*"]
 
 permissions:
   contents: read
