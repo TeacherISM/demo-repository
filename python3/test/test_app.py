@@ -4,6 +4,7 @@ from unittest import TestCase
 
 sys.path.append('../src')
 
+
 class AppTest(TestCase):
     def test_home(self):
         result = app.home()
