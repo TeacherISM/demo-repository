@@ -24,7 +24,8 @@ class AppTest(TestCase):
             {"id": 2, "name": "Australia", "capital": "Canberra", "area": 7617930},
             {"id": 3, "name": "Egypt", "capital": "Cairo", "area": 1010408},
         ]
-        result = app.get_countries()
+        with app.app_context():
+            result = app.get_countries()
         #convert result to a dictionary
         result = result.get_json()
         self.assertDictContainsSubset(result,countries_test)
