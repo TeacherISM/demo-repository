@@ -1,9 +1,8 @@
-import sys
-import unittest
-sys.path.append('../src')
-
-from src import app
 from unittest import TestCase
+from src import app
+import sys
+
+sys.path.append('../src')
 
 class AppTest(TestCase):
     def test_home(self):
