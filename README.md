@@ -2,6 +2,8 @@
 
 This code repository Contains some example services in different programming languages
 
+#### Create virtual environment and install libraries
+
 ```
 cd python3
 
@@ -15,6 +17,8 @@ pip install -r requirements.txt
 
 python ./src/app.py
 ```
+
+#### Build docker image with a Dockerfile
 
 ```
 deactivate
