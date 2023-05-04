@@ -3,6 +3,7 @@ from unittest import TestCase
 import sys
 sys.path.append('../src')
 
+
 class AppTest(TestCase):
     def test_home(self):
         result = app.home()
@@ -28,9 +29,8 @@ class AppTest(TestCase):
         self.assertIn(b"268021", rv.data)
         self.assertIn(b"4", rv.data)
         self.assertEqual(rv.status_code, 201)
-    
+
     def test_add_country_invalid(self):
         rv = self.app.post('/countries', data="This is not JSON")
         self.assertIn(b"Request must be JSON", rv.data)
         self.assertEqual(rv.status_code, 415)
-        
