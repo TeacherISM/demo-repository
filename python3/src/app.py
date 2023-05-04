@@ -4,7 +4,6 @@ from flask import Flask, render_template, request, jsonify
 # create the application object
 app = Flask(__name__)
 
-
 # use decorators to link the function to a url
 @app.route('/')
 def home():
@@ -40,7 +39,4 @@ def add_country():
         return country, 201
     return {"error": "Request must be JSON"}, 415
 
-
-# start the server with the 'run()' method
-if __name__ == '__main__':
-    app.run(debug=True)
+# the app is run from the run.py file to avoid any coverage issues
