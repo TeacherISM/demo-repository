@@ -1,7 +1,6 @@
 from src import app
 from unittest import TestCase
 import sys
-
 sys.path.append('../src')
 
 class AppTest(TestCase):
@@ -34,3 +33,4 @@ class AppTest(TestCase):
         rv = self.app.post('/countries', data="This is not JSON")
         self.assertIn(b"Request must be JSON", rv.data)
         self.assertEqual(rv.status_code, 415)
+        

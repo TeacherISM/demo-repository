@@ -4,6 +4,7 @@ from flask import Flask, render_template, request, jsonify
 # create the application object
 app = Flask(__name__)
 
+
 # use decorators to link the function to a url
 @app.route('/')
 def home():
@@ -24,6 +25,7 @@ countries = [
 
 def _find_next_id():
     return max(country["id"] for country in countries) + 1
+
 
 @app.get("/countries")
 def get_countries():
