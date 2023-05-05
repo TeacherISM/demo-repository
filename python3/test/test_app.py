@@ -22,4 +22,12 @@ class AppTest(TestCase):
         self.assertIn(b"Australia", result.data)
         self.assertIn(b"Egypt", result.data)
 
+    def test_post(self):
+        result = self.app.post('/countries', json={"name":"Mexico", "capital":"CDMX", "area":"4561534"})
+        self.assertIn(b"Mexico", result.data)
+        self.assertIn(b"CDMX", result.data)
+        self.assertIn(b"4561534", result.data)
+        self.assertIn(b"4", result.data)
+        self.assertEqual(result.status_code, 201)
+
 
