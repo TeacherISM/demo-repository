@@ -14,4 +14,4 @@ class AppTest(TestCase):
 
     def test_welcome(self):
         result = self.app.welcome()
-        self.assertIn("WELCOME", result.data)
+        self.assertIn(b"WELCOME", result.data)
