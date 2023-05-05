@@ -13,5 +13,5 @@ class AppTest(TestCase):
         self.app = app.app.test_client()
 
     def test_welcome(self):
-        result = self.app.welcome()
+        result = self.app.get('/welcome')
         self.assertIn(b"WELCOME", result.data)
