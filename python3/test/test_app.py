@@ -21,3 +21,10 @@ class AppTest(TestCase):
         self.assertIn(b"Thailand", result.data)
         self.assertIn(b"Australia", result.data)
         self.assertIn(b"Egypt", result.data)
+    
+    def test_add_country(self):
+        result = self.app.post('/countries', json={"name":"USA", "capital":"Washington", "area":"2694825"})
+        self.assertIn(b"USA", result.data)
+        self.assertIn(b"Washington", result.data)
+        self.assertIn(b"2694825", result.data)
+        self.assertIn(b"4")
