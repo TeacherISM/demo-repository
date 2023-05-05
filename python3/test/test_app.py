@@ -9,3 +9,4 @@ class AppTest(TestCase):
 
         result = app.home()
         self.assertEqual(result, "Hello, World!")
+        
