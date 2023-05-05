@@ -9,8 +9,8 @@ class AppTest(TestCase):
         result = app.home()
         self.assertEqual(result, "Hello, World!")
 
-    def test_assert_mytemplate_used(self):
-        response = self.client.get('/welcome')
-        self.assertIn("GINA", response.data)
+    def test_html(self):
+        result = self.app.get('/welcome')
+        self.assertIn(b"GINA", result.data)
         #self.assert_template_used('mytemplate.html')
 
