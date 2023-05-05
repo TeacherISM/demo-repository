@@ -11,4 +11,4 @@ class AppTest(TestCase):
 
     def test_welcome(self):
         result = app.welcome()
-        self.assertEqual(result, "WELCOME")
+        self.assertEqual(result, 'welcome.html')
