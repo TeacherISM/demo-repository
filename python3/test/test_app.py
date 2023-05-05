@@ -11,4 +11,5 @@ class AppTest(TestCase):
 
     def test_welcome(self):
         result = self.get("/welcome")
-        self.assert_template_used(result, 'welcome.html')
+        assert self.get("/index/").data == result.data
+        #self.assert_template_used(result, 'welcome.html')
