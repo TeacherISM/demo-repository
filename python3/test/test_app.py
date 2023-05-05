@@ -11,6 +11,6 @@ class AppTest(TestCase):
 
     def test_assert_mytemplate_used(self):
         response = self.client.get('/welcome')
-        self.assertIn("welcome", response.data)
+        self.assertIn("GINA", response.data)
         #self.assert_template_used('mytemplate.html')
 
