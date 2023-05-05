@@ -10,6 +10,5 @@ class AppTest(TestCase):
         self.assertEqual(result, "Hello, World!")
 
     def test_welcome(self):
-        result = self.get("/welcome")
-        assert self.get("/welcome").data == result.data
-        #self.assert_template_used(result, 'welcome.html')
+        result = self.app.welcome()
+        self.assertIn("WELCOME", result.data)
