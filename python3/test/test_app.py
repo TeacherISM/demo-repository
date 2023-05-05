@@ -3,8 +3,8 @@ from unittest import TestCase
 import sys
 sys.path.append('../src')
 
-class AppTest(TestCase):
 
+class AppTest(TestCase):
 
     def setUp(self):
         self.app = app.app.test_client()
@@ -20,8 +20,8 @@ class AppTest(TestCase):
         assert "<h1>Hello World!</h1>" in html
         assert "<h2>Welcome to FlaskApp!</h2>" in html
         assert result.status_code == 200
-        self.assertEqual(result.status_code,200)
-    
+        self.assertEqual(result.status_code, 200)
+
     def test_get_countries(self):
         result = self.app.get("/countries")
         result.data.decode()
