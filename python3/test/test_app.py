@@ -9,6 +9,9 @@ class AppTest(TestCase):
         result = app.home()
         self.assertEqual(result, "Hello, World!")
 
+    def setUp(self):
+        self.app = app.app.test_client()
+
     def test_html(self):
         result = self.app.get('/welcome')
         self.assertIn(b"GINA", result.data)
