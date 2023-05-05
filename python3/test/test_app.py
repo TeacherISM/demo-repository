@@ -15,3 +15,6 @@ class AppTest(TestCase):
     def test_welcome(self):
         result = self.app.get('/welcome')
         self.assertIn(b"WELCOME", result.data)
+    
+    def test_countries(self):
+        result = self.app.get('/countries')
