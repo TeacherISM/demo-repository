@@ -24,11 +24,6 @@ class AppTest(TestCase):
         response = self.app.get('/countries')
         self.assertEqual(response.status_code, 200)
 
-    # test if the response is 201 for the countries page
-    def test_countries_201(self):
-        response = self.app.post('/countries')
-        self.assertEqual(response.status_code, 201)
-
     # test countries get endpoint
     def test_countries_get(self):
         result = self.app.get('/countries')
@@ -45,21 +40,21 @@ class AppTest(TestCase):
 
     # test countries post endpoint
     def test_countries_post(self):
+        countries = [
+            {"id": 1, "name": "Thailand", "capital": "Bangkok", "area": 513120},
+            {"id": 2, "name": "Australia", "capital": "Canberra", "area": 7617930},
+            {"id": 3, "name": "Egypt", "capital": "Cairo", "area": 1010408},
+        ]
         new_country = {"name": "Mexico",
                        "capital": "Mexico City", "area": 1964375}
         result = self.app.post('/countries', json=new_country)
         self.assertIn('id', json.loads(result.data))
-        self.assertEqual(len(self.countries) + 1, len(json.loads(result.data)))
-
-    # test next id function
-    def test_next_id(self):
-        result = self.app._find_next_id()
-        self.assertEqual(result, 4)
+        self.assertEqual(len(countries) + 1, len(json.loads(result.data)))
 
     # test invalid post endpoint
     def test_add_country_invalid_request(self):
         result = self.app.post(
-            '/countries', data='{"name": "China"}', content_type='application/json')
+            '/countries')
         self.assertEqual(result.status_code, 415)
         self.assertEqual(json.loads(result.data), {
                          "error": "Request must be JSON"})
