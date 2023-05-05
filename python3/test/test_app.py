@@ -1,13 +1,14 @@
 from flask.testing import FlaskClient
 import pytest
-
 from src import app
+
 
 @pytest.fixture
 def client():
     app.app.config["TESTING"] = True
     with app.app.test_client() as client:
         yield client
+
 
 def test_home(client: FlaskClient):
     result = client.get('/')
