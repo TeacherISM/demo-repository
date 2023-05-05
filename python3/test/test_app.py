@@ -10,4 +10,4 @@ class AppTest(TestCase):
         self.assertEqual(result, "Hello, World!")
 
     def test_welcome(self):
-        self.assert_template_used('welcome.html')
+        self.assertTemplateUsed('welcome.html')
