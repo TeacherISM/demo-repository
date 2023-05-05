@@ -27,4 +27,5 @@ class AppTest(TestCase):
         self.assertIn(b"USA", result.data)
         self.assertIn(b"Washington", result.data)
         self.assertIn(b"2694825", result.data)
-        self.assertIn(b"4")
+        self.assertIn(b"4", result.data)
+        self.assertEqual(result.status_code, 201)
