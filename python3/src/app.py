@@ -2,7 +2,7 @@
 from flask import Flask, render_template, request, jsonify
 
 # create the application object
-app = Flask(__name__)
+app = Flask(__name__, template_folder='static')
 
 
 # use decorators to link the function to a url
