@@ -18,3 +18,6 @@ class AppTest(TestCase):
     
     def test_countries(self):
         result = self.app.get('/countries')
+        self.assertIn(b"Thailand", result.data)
+        self.assertIn(b"Australia", result.data)
+        self.assertIn(b"Egypt", result.data)
