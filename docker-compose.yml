@@ -3,4 +3,4 @@ services:
   web:
     image: python/app:latest
     ports:
-      - 5000:5000
+      - 5001:5000
