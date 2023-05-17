@@ -2,3 +2,4 @@
 /python3/.pytest_cache/
 /python3/.coverage
 /python3/cc_report/
+.env
