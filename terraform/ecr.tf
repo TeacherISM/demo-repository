@@ -1,6 +1,5 @@
 resource "aws_ecrpublic_repository" "aws_dev_ecr" {
-  provider        = aws.us_east_1
-  repository_name = "demo-repository-ecr"
+  repository_name = "diegos-repo"
 
   catalog_data {
     about_text        = "About Text"

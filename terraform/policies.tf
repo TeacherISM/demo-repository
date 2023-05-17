@@ -1,24 +1,22 @@
-resource "aws_ecr_lifecycle_policy" "default_policy" {
-  provider = aws.us_east_1
-  repository = aws_ecrpublic_repository.aws_dev_ecr.repository_name
+resource "aws_ecrpublic_repository_policy" "example" {
+  repository_name = aws_ecrpublic_repository.aws_dev_ecr.repository_name
 
   policy = <<EOF
 {
-    "rules": [
-        {
-            "rulePriority": 1,
-            "description": "Keep only the last ${var.untagged_images} untagged images.",
-            "selection": {
-                "tagStatus": "untagged",
-                "countType": "imageCountMoreThan",
-                "countNumber": ${var.untagged_images}
-            },
-            "action": {
-                "type": "expire"
-            }
-        }
-    ]
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "PublicAccess",
+      "Effect": "Allow",
+      "Principal": "*",
+      "Action": [
+        "ecr-public:GetRepositoryPolicy",
+        "ecr-public:PullImage",
+        "ecr-public:DescribeImages",
+        "ecr-public:DescribeRepositories"
+      ]
+    }
+  ]
 }
 EOF
-
 }

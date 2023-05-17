@@ -7,11 +7,10 @@ resource "null_resource" "docker_packaging" {
   provisioner "local-exec" {
     command = <<EOF
     aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin ${data.aws_caller_identity.current.account_id}.dkr.ecr.us-east-1.amazonaws.com
-    pwd
-    ls
     cd ../python3
-    docker build -t "${aws_ecrpublic_repository.aws_dev_ecr.repository_uri}/app:latest" -f Dockerfile .
-    docker push "${aws_ecrpublic_repository.aws_dev_ecr.repository_uri}/app:latest"
+    docker build -t diegos-repo .
+    docker tag diegos-repo:latest "${aws_ecrpublic_repository.aws_dev_ecr.repository_uri}/diegos-repo:latest"
+    docker push "${aws_ecrpublic_repository.aws_dev_ecr.repository_uri}:latest"
     EOF
   }
 
