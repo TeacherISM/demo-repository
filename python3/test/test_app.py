@@ -14,7 +14,6 @@ class AppTest(TestCase):
     def setUp(self) -> None:
         self.app = app.app.test_client()
 
-    
     def test_welcome(self):
         result = self.app.get('/welcome')
         self.assertIn('Welcome!', str(result.data))
@@ -42,4 +41,3 @@ class AppTest(TestCase):
     def test_find_next_id(self):
         next_id = app._find_next_id()
         self.assertEqual(next_id, 4)
-        
