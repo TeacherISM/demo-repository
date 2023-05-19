@@ -32,6 +32,26 @@ def test_get_countries(client: FlaskClient):
     assert result.status_code == 200
     assert result.content_type == 'application/json'
 
+    def setUp(self):
+        self.app = app.app.test_client()
+
+    def test_welcome(self):
+        result = self.app.get('/welcome')
+        self.assertIn(b"WELCOME!", result.data)
+
+    def test_countries(self):
+        result = self.app.get('/countries')
+        self.assertIn(b"Thailand", result.data)
+        self.assertIn(b"Australia", result.data)
+        self.assertIn(b"Egypt", result.data)
+
+    def test_add_country(self):
+        result = self.app.post('/countries', json={"name": "New Zealand", "capital": "Wellington", "area": 268021})
+        self.assertIn(b"New Zealand", result.data)
+        self.assertIn(b"Wellington", result.data)
+        self.assertIn(b"268021", result.data)
+        self.assertIn(b"4", result.data)
+        self.assertEqual(result.status_code, 201)
 
 def test_post_countries(client: FlaskClient):
     result = client.post('/countries', json={"name": "Japan", "capital": "Tokyo", "area": 377975})
