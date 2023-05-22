@@ -7,10 +7,10 @@ resource "null_resource" "docker_packaging" {
   provisioner "local-exec" {
     command = <<EOF
     cd ../python3
-    aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/d0z3f1c0
+    aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/b8g7b0c7
     docker build -t "demo-repository-ecr:latest" -f Dockerfile .
-    docker tag demo-repository-ecr:latest public.ecr.aws/d0z3f1c0/demo-repository-ecr:latest
-    docker push public.ecr.aws/d0z3f1c0/demo-repository-ecr:latest
+    docker tag demo-repository-ecr:latest public.ecr.aws/b8g7b0c7/demo-repository-ecr:latest
+    docker push public.ecr.aws/b8g7b0c7/demo-repository-ecr:latest
     EOF
   }
 
