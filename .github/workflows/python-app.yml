@@ -15,7 +15,6 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v3
       - name: Set up Python 3.10
@@ -39,6 +38,20 @@ jobs:
           coverage run -m pytest python3/test/
           coverage report
           coverage html -d cc_report/
+  dockerize:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Build and tag image
+        env:
+          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          ECR_REPOSITORY: d0z3f1c0/demo-repository-ecr
+          IMAGE_TAG: latest
+        run: |
+          cd python3
+          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
@@ -50,12 +63,10 @@ jobs:
         uses: aws-actions/amazon-ecr-login@v1
         with:
           registry-type: public
-      - name: Build, tag, and push image to Amazon ECR
+      - name: Push image to Amazon ECR
         env:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
           ECR_REPOSITORY: d0z3f1c0/demo-repository-ecr
           IMAGE_TAG: latest
         run: |
-          cd python3
-          docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
