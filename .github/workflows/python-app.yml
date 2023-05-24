@@ -86,7 +86,7 @@ jobs:
           IMAGE_TAG: latest
         with:
           name: ${{ env.IMAGE_TAG }}
-          path: /tmp/${{ env.IMAGE_TAG }}.tar
+          path: /tmp
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
