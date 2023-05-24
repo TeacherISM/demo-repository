@@ -69,6 +69,8 @@ jobs:
           outputs: type=docker,dest=/tmp/${{ env.IMAGE_TAG }}.tar
       - name: Save image
         uses: actions/upload-artifact@v3
+        env:
+          IMAGE_TAG: latest
         with:
           name: ${{ env.IMAGE_TAG }}
           path: /tmp/${{ env.IMAGE_TAG }}.tar
