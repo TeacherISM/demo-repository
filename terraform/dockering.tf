@@ -7,11 +7,13 @@ resource "null_resource" "docker_packaging" {
   provisioner "local-exec" {
     command = <<EOF
     cd ../python3
-    aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/d0z3f1c0
-    docker build -t "demo-repository-ecr:latest" -f Dockerfile .
-    docker tag demo-repository-ecr:latest public.ecr.aws/d0z3f1c0/demo-repository-ecr:latest
-    docker push public.ecr.aws/d0z3f1c0/demo-repository-ecr:latest
-    EOF
+    aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/m9h4y3g8
+    docker build -t "demo-repository-ecr-2:latest" -f Dockerfile .
+    docker tag demo-repository-ecr-2:latest public.ecr.aws/n8t4w4w2/demo-repository-ecr-2:latest
+    docker push public.ecr.aws/n8t4w4w2/demo-repository-ecr-2:latest
+  EOF
+
+    interpreter = ["PowerShell", "-Command"]
   }
 
   triggers = {
@@ -19,6 +21,6 @@ resource "null_resource" "docker_packaging" {
   }
 
   depends_on = [
-    aws_ecrpublic_repository.aws_dev_ecr,
+    aws_ecrpublic_repository.aws_dev_ecr
   ]
 }
