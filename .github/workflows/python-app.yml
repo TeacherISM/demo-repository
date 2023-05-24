@@ -5,13 +5,9 @@ name: Python application
 
 on:
   push:
-<<<<<<< HEAD
-    branches: ["*"]
-=======
     branches: [ "*" ]
->>>>>>> origin/IvanSantiago
   pull_request:
-    branches: ["main"]
+    branches: [ "main" ]
 
 permissions:
   contents: read
