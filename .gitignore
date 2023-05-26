@@ -2,5 +2,6 @@
 /python3/.pytest_cache/
 /python3/.coverage
 /python3/cc_report/
-/terraform/.terraform/providers/registry.terraform.io/hashicorp/null/3.2.1/darwin_amd64/terraform-provider-null_v3.2.1_x5
-
+/terraform/.terraform/
+/terraform/.terraform.lock*
+/terraform/terraform.tfstate*
