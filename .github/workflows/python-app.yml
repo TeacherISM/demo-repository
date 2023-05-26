@@ -70,7 +70,7 @@ jobs:
       - name: Save image
         uses: actions/upload-artifact@v3
         env:
-          IMAGE_TAG: A01751912
+          IMAGE_TAG: A01020746
         with:
           name: ${{ env.IMAGE_TAG }}
           path: /tmp/${{ env.IMAGE_TAG }}.tar
