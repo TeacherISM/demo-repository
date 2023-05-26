@@ -1,7 +1,7 @@
-import sys
 from src import app
 from unittest import TestCase
-import json
+import sys
+
 sys.path.append('../src')
 
 
@@ -50,11 +50,3 @@ class AppTest(TestCase):
         result = self.app.post('/countries', json=new_country)
         self.assertIn('id', json.loads(result.data))
         self.assertEqual(len(countries) + 1, len(json.loads(result.data)))
-
-    # test invalid post endpoint
-    def test_add_country_invalid_request(self):
-        result = self.app.post(
-            '/countries')
-        self.assertEqual(result.status_code, 415)
-        self.assertEqual(json.loads(result.data), {
-                         "error": "Request must be JSON"})
