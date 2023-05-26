@@ -14,6 +14,7 @@ data "aws_iam_policy_document" "ecr_policy" {
     ]
   }
 }
+
 resource "aws_ecrpublic_repository_policy" "default_policy" {
   provider        = aws.us_east_1
   repository_name = aws_ecrpublic_repository.aws_dev_ecr.repository_name
