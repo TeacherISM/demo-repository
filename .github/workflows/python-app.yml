@@ -83,7 +83,7 @@ jobs:
       - name: Read artifact
         uses: actions/download-artifact@v3
         env:
-          IMAGE_TAG: A0129746
+          IMAGE_TAG: A01029746
         with:
           name: ${{ env.IMAGE_TAG }}
           path: /tmp
