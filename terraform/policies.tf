@@ -1,24 +1,22 @@
-resource "aws_ecr_lifecycle_policy" "default_policy" {
-  provider = aws.us_east_1
-  repository = aws_ecrpublic_repository.aws_dev_ecr.repository_name
+data "aws_iam_policy_document" "ecr_policy" {
+  provider        = aws.us_east_1
+  statement {
+    sid    = "new policy"
+    effect = "Allow"
 
-  policy = <<EOF
-{
-    "rules": [
-        {
-            "rulePriority": 1,
-            "description": "Keep only the last ${var.untagged_images} untagged images.",
-            "selection": {
-                "tagStatus": "untagged",
-                "countType": "imageCountMoreThan",
-                "countNumber": ${var.untagged_images}
-            },
-            "action": {
-                "type": "expire"
-            }
-        }
+    principals {
+      type        = "AWS"
+      identifiers = ["*"]
+    }
+
+    actions = [
+      "ecr:*",
     ]
+  }
 }
-EOF
+resource "aws_ecrpublic_repository_policy" "default_policy" {
+  provider        = aws.us_east_1
+  repository_name = aws_ecrpublic_repository.aws_dev_ecr.repository_name
 
+  policy = data.aws_iam_policy_document.ecr_policy.json
 }
