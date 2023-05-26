@@ -2,8 +2,6 @@
 /python3/.pytest_cache/
 /python3/.coverage
 /python3/cc_report/
-
-
 /terraform/.terraform/
-/terraform/.terraform.lock.hcl
-
+/terraform/.terraform.lock*
+/terraform/terraform.tfstate*
