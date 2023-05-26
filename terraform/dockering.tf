@@ -9,8 +9,8 @@ resource "null_resource" "docker_packaging" {
     cd ../python3
     aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/d0z3f1c0
     docker build -t "demo-repository-ecr:latest" -f Dockerfile .
-    docker tag demo-repository-ecr:latest public.ecr.aws/d0z3f1c0/demo-repository-ecr:latest
-    docker push public.ecr.aws/d0z3f1c0/demo-repository-ecr:latest
+    docker tag demo-repository-ecr:latest public.ecr.aws/e7b5t4j3/demo-repository-ecr:latest
+    docker push public.ecr.aws/e7b5t4j3/demo-repository-ecr:latest
     EOF
   }
 

@@ -1,6 +1,6 @@
-FROM python:3.7-stretch
+FROM python:3.11
 
-RUN apt-get update && apt-get -y install libsnappy-dev && apt-get -y install python3-dev
+##RUN apt-get update && apt-get -y install libsnappy-dev && apt-get -y install python3-dev
 RUN mkdir /app
 COPY execute.sh /app/execute.sh
 COPY requirements.txt /app/requirements.txt
