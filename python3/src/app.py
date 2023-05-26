@@ -5,6 +5,7 @@ from flask import Flask, render_template, request, jsonify
 app = Flask(__name__)
 
 
+#comentario
 # use decorators to link the function to a url
 @app.route('/')
 def home():
