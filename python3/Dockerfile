@@ -10,5 +10,3 @@ COPY src/ /app/src/
 EXPOSE 5000
 WORKDIR /app/
 ENTRYPOINT ["./execute.sh"]
-
-#test
