@@ -1,7 +1,7 @@
 # import the Flask class from the flask module
 from flask import Flask, render_template, request, jsonify
 
-# create the application object
+# create the application object here
 app = Flask(__name__)
 
 
