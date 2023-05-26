@@ -38,6 +38,7 @@ jobs:
           coverage run -m pytest python3/test/
           coverage report
           coverage html -d cc_report/
+
   dockerize:
     runs-on: ubuntu-latest
     needs: build
