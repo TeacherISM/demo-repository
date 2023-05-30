@@ -1,5 +1,5 @@
 data "aws_iam_policy_document" "ecr_policy" {
-  provider        = aws.us_east_1
+  provider = aws.us_east_1
   statement {
     sid    = "new policy"
     effect = "Allow"
